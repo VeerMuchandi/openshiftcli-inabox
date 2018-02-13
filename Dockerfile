@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/rhel7
+FROM registry.access.redhat.com/rhel7-atomic
 
 ENV SIAB_VERSION=2.19 \
   SIAB_USERCSS="Colors:+/usr/share/shellinabox/color.css,Normal:-/usr/share/shellinabox/white-on-black.css,Monochrome:-/usr/share/shellinabox/monochrome.css" \
@@ -18,11 +18,11 @@ ENV SIAB_VERSION=2.19 \
   SIAB_PKGS2=none \
   SIAB_SCRIPT=none
 
-RUN yum install -y --enablerepo=rhel-7-server-rpms openssh-clients sudo git && \
-    yum -y install http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && \ 
-    yum install -y shellinabox && \
-    yum install atomic-openshift-clients --enablerepo="rhel-7-server-ose-3.7-rpms" -y && \
-    yum clean all
+RUN microdnf install -y --enablerepo=rhel-7-server-rpms openssh-clients sudo git && \
+    microdnf -y install http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && \ 
+    microdnf install -y shellinabox && \
+    microdnf install atomic-openshift-clients --enablerepo="rhel-7-server-ose-3.7-rpms" -y && \
+    microdnf clean all
 
 EXPOSE 4200
 
