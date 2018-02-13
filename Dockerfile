@@ -1,4 +1,5 @@
-FROM registry.access.redhat.com/rhel7-atomic
+FROM registry.access.redhat.com/rhel7-atomic 
+MAINTAINER Veer Muchandi<veer@redhat.com>
 
 ENV SIAB_VERSION=2.19 \
   SIAB_USERCSS="Colors:+/usr/share/shellinabox/color.css,Normal:-/usr/share/shellinabox/white-on-black.css,Monochrome:-/usr/share/shellinabox/monochrome.css" \
