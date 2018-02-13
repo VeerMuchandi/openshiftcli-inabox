@@ -18,10 +18,10 @@ ENV SIAB_VERSION=2.19 \
   SIAB_PKGS2=none \
   SIAB_SCRIPT=none
 
-RUN yum -y install http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && \ 
-    yum install -y --enablerepo=rhel-7-server-rpms openssh-clients sudo git && \
+RUN yum install -y --enablerepo=rhel-7-server-rpms openssh-clients sudo git && \
+    yum -y install http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && \ 
     yum install -y shellinabox && \
-    yum install atomic-openshift-clients --enable="rhel-7-server-ose-3.7-rpms" -y && \
+    yum install atomic-openshift-clients --enablerepo="rhel-7-server-ose-3.7-rpms" -y && \
     yum clean all
 
 EXPOSE 4200
