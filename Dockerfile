@@ -19,7 +19,7 @@ ENV SIAB_VERSION=2.19 \
   SIAB_PKGS2=none \
   SIAB_SCRIPT=none
 
-RUN microdnf install -y --enablerepo=rhel-7-server-rpms openssh-clients sudo git wget openssl bash-completion && \
+RUN microdnf install -y --enablerepo=rhel-7-server-rpms openssh-clients sudo git wget openssl bash-completion passwd hostname && \
     wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && \
     rpm -ivh epel-release-latest-7.noarch.rpm && \
     microdnf install -y shellinabox && \
