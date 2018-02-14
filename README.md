@@ -73,3 +73,10 @@ Now you can use your route to access it from the browser.
 
 Login using `guest` and password that you chose at the beginning. Run regular `oc` commands from command line.
 
+### References
+
+Concepts borrowed from 
+
+[https://hub.docker.com/r/sspreitzer/shellinabox/~/dockerfile/](https://hub.docker.com/r/sspreitzer/shellinabox/~/dockerfile/)
+
+[https://github.com/debianmaster/buildtools](https://github.com/debianmaster/buildtools)
