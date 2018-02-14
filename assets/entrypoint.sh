@@ -8,7 +8,7 @@ hex()
 }
 
 echo "Preparing container .."
-COMMAND="/usr/sbin/shellinaboxd --debug --no-beep -u shellinabox -g shellinabox -c /var/lib/shellinabox -p ${SIAB_PORT} --user-css ${SIAB_USERCSS}"
+COMMAND="/usr/sbin/shellinaboxd --disable-peer-check --debug --no-beep -u shellinabox -g shellinabox -c /var/lib/shellinabox -p ${SIAB_PORT} --user-css ${SIAB_USERCSS}"
 
 if [ "$SIAB_SSL" != "true" ]; then
 	COMMAND+=" -t"
