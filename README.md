@@ -8,6 +8,8 @@ This repository uses shellinabox. This is ShellInABox+OpenShift Client tools.
 * All dependencies needed by openshift-cli are added to this image along with ShellInABox. ShellInABox comes from EPEL
 * `/var/run/nologin` removed (moved) to allow user login
 * shellinaboxd running with `--disable-peer-check` so that the connection is not reset every few mins due to container running behind a load balancer
+* This container runs as root as you want to add additional users to this shell. So the openshift admin needs to provide `anyuid` access to the service account used to run this container.
+
 
 ## Deploying on OpenShift
 
