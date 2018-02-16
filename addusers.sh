@@ -6,3 +6,4 @@ do
   useradd user${i}
   echo -n $USER_PASSWORD| passwd user${i} --stdin
 done
+
