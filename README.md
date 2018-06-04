@@ -82,7 +82,7 @@ Login using `guest` and password that you chose at the beginning. Run regular `o
 ### Deploying with a bunch of users provisioned with your cliinabox
 
 ```
-$ export USER_PASSWORD=<<Your User Password>>
+$ export USERPASSWORD=<<Your User Password>>
 ```
 
 Use the following command to create the application that provisions 25 users. 
