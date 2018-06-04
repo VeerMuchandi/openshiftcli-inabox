@@ -25,7 +25,7 @@ RUN microdnf install -y --enablerepo=rhel-7-server-rpms openssh-clients sudo git
     microdnf install -y shellinabox && \
     microdnf install atomic-openshift-clients --enablerepo="rhel-7-server-ose-3.9-rpms" -y && \
     microdnf clean all && \
-    mv /var/run/nologin /var/run/nologin.bak
+    if [ -e /var/run/nologin ] then mv /var/run/nologin /var/run/nologin.bak fi
 
 EXPOSE 4200
 
