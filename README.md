@@ -25,7 +25,7 @@ $ export MYPASSWORD=<<Your Guest Password>>
 Deploy OpenShift CLI ShellInABox application.
 
 ```
-$ oc new-app https://github.com/VeerMuchandi/openshiftcli-inabox --name=cliinbox -e SIAB_PASSWORD=$MYPASSWORD
+$ oc new-app https://github.com/VeerMuchandi/openshiftcli-inabox --name=cli -e SIAB_PASSWORD=$MYPASSWORD
 --> Found Docker image 05a7a26 (3 weeks old) from registry.access.redhat.com for "registry.access.redhat.com/rhel7/rhel-atomic"              
                                                                                                                                              
     Red Hat Enterprise Linux 7                                                                                                               
@@ -48,14 +48,14 @@ strator
                                                                                                                                              
 --> Creating resources ...                                                                                                                   
     imagestream "rhel-atomic" created                                                                                                        
-    imagestream "cliinbox" created                                                                                                           
-    buildconfig "cliinbox" created                                                                                                           
-    deploymentconfig "cliinbox" created                                                                                                      
-    service "cliinbox" created                                                                                                               
+    imagestream "cli" created                                                                                                           
+    buildconfig "cli" created                                                                                                           
+    deploymentconfig "cli" created                                                                                                      
+    service "cli" created                                                                                                               
 --> Success                                                                                                                                  
-    Build scheduled, use 'oc logs -f bc/cliinbox' to track its progress.                                                                     
+    Build scheduled, use 'oc logs -f bc/cli' to track its progress.                                                                     
     Application is not exposed. You can expose services to the outside world by executing one or more of the commands below:                 
-     'oc expose svc/cliinbox'                                                                                                                
+     'oc expose svc/cli'                                                                                                                
     Run 'oc status' to view your app.
 ```
 
@@ -64,20 +64,33 @@ Expose the service to create a route
 ```
 $ oc get svc                                                                                                            
 NAME       CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE                                                                                     
-cliinbox   172.30.123.236   <none>        4200/TCP   1m  
+cli       172.30.123.236   <none>        4200/TCP   1m  
 
-$ oc expose svc cliinbox                                                                                                
-route "cliinbox" exposed                             
+$ oc expose svc cli                                                                                               
+route "cli" exposed                             
 
 $ oc get route                                                                                                          
 NAME       HOST/PORT                                 PATH      SERVICES   PORT       TERMINATION   WILDCARD                                  
-cliinbox   cliinbox-occli.apps.devday.ocpcloud.com             cliinbox   4200-tcp                 None
+cliinbox   cli-inbox.apps.devday.ocpcloud.com             cliinbox   4200-tcp                 None
 
 ```
 
 Now you can use your route to access it from the browser.
 
 Login using `guest` and password that you chose at the beginning. Run regular `oc` commands from command line.
+
+### Deploying with a bunch of users provisioned with your cliinabox
+
+```
+$ export USER_PASSWORD=<<Your User Password>>
+```
+
+Use the following command to create the application that provisions 25 users. 
+
+```
+oc new-app https://github.com/VeerMuchandi/openshiftcli-inabox --name=cli -e SIAB_PASSWORD=$MYPASSWORD -e USER_COUNT=25 -e USER_PASSWORD=$USERPASSWORD SIAB_SCRIPT=https://raw.githubusercontent.com/VeerMuchandi/openshiftcli-inabox/master/addusers.sh
+
+```
 
 ### References
 
