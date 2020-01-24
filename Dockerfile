@@ -19,7 +19,15 @@ ENV SIAB_VERSION=2.19 \
   SIAB_PKGS2=none \
   SIAB_SCRIPT=none
 
-RUN microdnf install -y --enablerepo=rhel-8-for-x86_64-baseos-rpms openssh-clients tar sudo git wget openssl bash-completion passwd hostname && \
+USER root
+# Copy entitlements
+COPY ./etc-pki-entitlement /etc/pki/entitlement
+# Copy subscription manager configurations
+COPY ./rhsm-conf /etc/rhsm
+COPY ./rhsm-ca /etc/rhsm/ca
+
+RUN rm /etc/rhsm-host && \
+    microdnf install -y --enablerepo=rhel-8-for-x86_64-baseos-rpms openssh-clients tar sudo git wget openssl bash-completion passwd hostname && \
     wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && \
     rpm -ivh epel-release-latest-7.noarch.rpm && \
     microdnf install -y shellinabox && \
@@ -37,6 +45,8 @@ RUN microdnf install -y --enablerepo=rhel-8-for-x86_64-baseos-rpms openssh-clien
     microdnf clean all  && \
     if [ -e /var/run/nologin ]; then mv /var/run/nologin /var/run/nologin.bak; fi
 
+
+USER 1001
 EXPOSE 4200
 
 ADD assets/entrypoint.sh /usr/local/sbin/
