@@ -33,8 +33,8 @@ RUN rm /etc/rhsm-host && \
     microdnf install -y shellinabox && \
     wget https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-client-linux-4.3.0.tar.gz && \
     tar -xvzf openshift-client-linux-4.3.0.tar.gz -C /usr/local/bin && \
-    rm -f openshift-client-linux-4.3.0.tar.gz -y && \
-    rm -f epel-release-latest-7.noarch.rpm -y && \
+    rm -f openshift-client-linux-4.3.0.tar.gz && \
+    rm -f epel-release-latest-7.noarch.rpm && \
     curl -L https://mirror.openshift.com/pub/openshift-v4/clients/odo/latest/odo-linux-amd64 -o /usr/local/bin/odo && \
     chmod +x /usr/local/bin/odo && \
     curl -LO https://github.com/tektoncd/cli/releases/download/v0.6.0/tkn_0.6.0_Linux_x86_64.tar.gz && \
