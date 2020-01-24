@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/rhel7/rhel-atomic 
+FROM registry.access.redhat.com/ubi7/ubi 
 MAINTAINER Veer Muchandi<veer@redhat.com>
 
 ENV SIAB_VERSION=2.19 \
