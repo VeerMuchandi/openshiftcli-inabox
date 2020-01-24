@@ -23,6 +23,7 @@ RUN microdnf install -y --enablerepo=rhel-8-for-x86_64-baseos-rpms openssh-clien
     wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && \
     rpm -ivh epel-release-latest-7.noarch.rpm && \
     microdnf install -y shellinabox && \
+    wget https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-client-linux-4.3.0.tar.gz && \
     tar -xvzf openshift-client-linux-4.3.0.tar.gz -C /usr/local/bin && \
     rm -f openshift-client-linux-4.3.0.tar.gz -y && \
     rm -f epel-release-latest-7.noarch.rpm -y && \
