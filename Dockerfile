@@ -19,7 +19,6 @@ ENV SIAB_VERSION=2.19 \
   SIAB_PKGS2=none \
   SIAB_SCRIPT=none
 
-USER root
 # Copy entitlements
 COPY ./etc-pki-entitlement /etc/pki/entitlement
 # Copy subscription manager configurations
@@ -46,7 +45,6 @@ RUN rm /etc/rhsm-host && \
     if [ -e /var/run/nologin ]; then mv /var/run/nologin /var/run/nologin.bak; fi
 
 
-USER 1001
 EXPOSE 4200
 
 ADD assets/entrypoint.sh /usr/local/sbin/
