@@ -116,6 +116,14 @@ SIAB_SCRIPT=https://raw.githubusercontent.com/VeerMuchandi/openshiftcli-inabox/m
 
 ```
 
+Expose service
+
+```
+oc expose svc cli
+```
+
+Now you can login as user1, user2 etc.
+
 ### References
 
 Concepts borrowed from 
