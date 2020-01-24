@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi7/ubi 
+FROM registry.access.redhat.com/ubi7/ubi-minimal 
 MAINTAINER Veer Muchandi<veer@redhat.com>
 
 ENV SIAB_VERSION=2.19 \
