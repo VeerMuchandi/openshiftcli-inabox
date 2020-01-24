@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi7/ubi-minimal 
+FROM registry.access.redhat.com/ubi8/ubi-minimal 
 MAINTAINER Veer Muchandi<veer@redhat.com>
 
 ENV SIAB_VERSION=2.19 \
@@ -19,11 +19,20 @@ ENV SIAB_VERSION=2.19 \
   SIAB_PKGS2=none \
   SIAB_SCRIPT=none
 
-RUN microdnf install -y --enablerepo=rhel-7-server-rpms openssh-clients sudo git wget openssl bash-completion passwd hostname && \
+RUN microdnf install -y --enablerepo=rhel-8-for-x86_64-baseos-rpms openssh-clients tar sudo git wget openssl bash-completion passwd hostname && \
     wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && \
     rpm -ivh epel-release-latest-7.noarch.rpm && \
     microdnf install -y shellinabox && \
-    microdnf install atomic-openshift-clients --enablerepo="rhel-7-server-ose-3.11-rpms" -y && \
+    tar -xvzf openshift-client-linux-4.3.0.tar.gz -C /usr/local/bin && \
+    rm -f openshift-client-linux-4.3.0.tar.gz -y && \
+    rm -f epel-release-latest-7.noarch.rpm -y && \
+    curl -L https://mirror.openshift.com/pub/openshift-v4/clients/odo/latest/odo-linux-amd64 -o /usr/local/bin/odo && \
+    chmod +x /usr/local/bin/odo && \
+    curl -LO https://github.com/tektoncd/cli/releases/download/v0.6.0/tkn_0.6.0_Linux_x86_64.tar.gz && \
+    tar xvzf tkn_0.6.0_Linux_x86_64.tar.gz -C /usr/local/bin/ tkn && \
+    rm -f tkn_0.6.0_Linux_x86_64.tar.gz && \
+    curl https://storage.googleapis.com/knative-nightly/client/latest/kn-linux-amd64 -o /usr/local/bin/kn && \
+    chmod +x /usr/local/bin/kn && \
     microdnf clean all  && \
     if [ -e /var/run/nologin ]; then mv /var/run/nologin /var/run/nologin.bak; fi
 
