@@ -4,7 +4,7 @@ MAINTAINER Veer Muchandi<veer@redhat.com>
 ENV SIAB_VERSION=2.19 \
   SIAB_USERCSS="Colors:+/usr/share/shellinabox/color.css,Normal:-/usr/share/shellinabox/white-on-black.css,Monochrome:-/usr/share/shellinabox/monochrome.css" \
   SIAB_PORT=4200 \
-  SIAB_ADDUSER=true \
+  SIAB_ADDUSER=false \
   SIAB_USER=guest \
   SIAB_USERID=1000 \
   SIAB_GROUP=guest \
@@ -12,7 +12,7 @@ ENV SIAB_VERSION=2.19 \
   SIAB_PASSWORD=putsafepasswordhere \
   SIAB_SHELL=/bin/bash \
   SIAB_HOME=/home/guest \
-  SIAB_SUDO=true \
+  SIAB_SUDO=false \
   SIAB_SSL=false \
   SIAB_SERVICE=/:LOGIN \
   SIAB_PKGS=none \
