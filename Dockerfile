@@ -4,7 +4,7 @@ MAINTAINER Veer Muchandi<veer@redhat.com>
 ENV SIAB_VERSION=2.19 \
   SIAB_USERCSS="Colors:+/usr/share/shellinabox/color.css,Normal:-/usr/share/shellinabox/white-on-black.css,Monochrome:-/usr/share/shellinabox/monochrome.css" \
   SIAB_PORT=4200 \
-  SIAB_ADDUSER=false \
+  SIAB_ADDUSER=true \
   SIAB_USER=guest \
   SIAB_USERID=1000 \
   SIAB_GROUP=guest \
