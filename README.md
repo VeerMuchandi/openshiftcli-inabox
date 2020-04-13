@@ -10,10 +10,19 @@ This repository uses shellinabox. This is ShellInABox+OpenShift Client tools.
 * shellinaboxd running with `--disable-peer-check` so that the connection is not reset every few mins due to container running behind a load balancer
 * This container runs as root as you want to add additional users to this shell. So the openshift admin needs to provide `anyuid` access to the service account used to run this container. 
 
-```
-oc adm policy add-scc-to-user anyuid -z default -n inabox
+Check if there is a clusterrole for anyuid`, if not create one
 ```
 
+oc create clusterrole anyuid-role --verb=use --resource=scc --resource-name=anyuid
+role.rbac.authorization.k8s.io/anyuid-role created
+```
+
+Add `default` SA in to the role that is associated with `anyuid` SCC.
+
+```
+oc adm policy add-cluster-role-to-user anyuid-role -z default -n inabox
+clusterrole.rbac.authorization.k8s.io/anyuid-role added: "default"
+```
 
 ## Deploying on OpenShift
 
